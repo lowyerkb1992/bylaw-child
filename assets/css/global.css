@@ -1,0 +1,41 @@
+/* bylaw-child/assets/css/global.css
+   Global baseline styles and CSS variables for child theme
+*/
+
+:root{
+  --bch-font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --bch-font-size-base: 16px;
+  --bch-line-height-base: 1.5;
+  --bch-color-primary: #0a3d62;
+  --bch-color-accent: #f39c12;
+  --bch-spacing-1: 0.5rem;
+  --bch-spacing-2: 1rem;
+  --bch-spacing-3: 1.5rem;
+  --bch-border-radius: 6px;
+}
+
+html{box-sizing:border-box;}
+*,*::before,*::after{box-sizing:inherit;}
+
+body{
+  font-family: var(--bch-font-family);
+  font-size: var(--bch-font-size-base);
+  line-height: var(--bch-line-height-base);
+  color: #222;
+  background-color: #fff;
+}
+
+.bch-btn{
+  display:inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: var(--bch-border-radius);
+  background: var(--bch-color-primary);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bch-mt-1{margin-top:var(--bch-spacing-1);} 
+.bch-mt-2{margin-top:var(--bch-spacing-2);} 
+.bch-mb-1{margin-bottom:var(--bch-spacing-1);} 

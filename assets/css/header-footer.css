@@ -1,0 +1,30 @@
+/* bylaw-child/assets/css/header-footer.css
+   Header/footer specific styles (floating CTAs will be added later)
+*/
+
+.bch-topbar{ display:none; }
+.bch-lang-switcher{ display:inline-block; }
+
+.bch-floating-ctas{
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display:flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 9999;
+}
+.bch-cta{ display:flex; align-items:center; gap:0.5rem; padding:0.5rem 0.6rem; background:#0a3d62; color:#fff; border-radius:6px; text-decoration:none; box-shadow:0 6px 18px rgba(10,61,98,0.12); }
+.bch-cta:hover{ transform:translateY(-2px); }
+.bch-cta-icon{ font-size:1.1rem; }
+.bch-cta-label{ font-size:0.95rem; }
+
+/* Mobile: smaller, compact floating bar */
+@media (max-width: 600px){
+  .bch-floating-ctas{ right:0.6rem; bottom:0.6rem; }
+  .bch-cta{ padding:0.45rem 0.5rem; gap:0.4rem; }
+  .bch-cta-label{ display:none; }
+}
+
+.is-rtl .bch-floating-ctas{ right: auto; left: 1rem; }
+

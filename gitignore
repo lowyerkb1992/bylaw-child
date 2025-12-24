@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
+
+# Node / build (لو موجودة)
+node_modules/
+dist/
+build/
+
+# WordPress cache (لو ظهرت)
+wp-content/cache/

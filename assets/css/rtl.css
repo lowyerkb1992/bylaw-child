@@ -1,0 +1,11 @@
+/* bylaw-child/assets/css/rtl.css
+   RTL adjustments for Arabic language (loaded conditionally)
+*/
+html[dir="rtl"], body[dir="rtl"] {
+    direction: rtl;
+}
+
+.bch-text-left{ text-align: right; }
+.bch-text-right{ text-align: left; }
+
+.bch-icon-left{ margin-left: 0; margin-right: 0.5rem; }

@@ -1,0 +1,13 @@
+/*
+Theme Name: ByLaw Child — Almoustashar Legal
+Theme URI: https://almoustasharlegal.com/
+Description: Child theme for ByLaw customized for Almoustashar Legal (EN/AR)
+Author: Almoustashar Legal
+Template: bylaw
+Version: 1.0.0
+Text Domain: bylaw-child
+*/
+
+/* Importing parent styles is handled in functions.php to keep load order explicit */
+
+/* Custom child theme styles may be placed in assets/css/*.css and enqueued via functions.php */
