@@ -120,7 +120,4 @@ add_action( 'wp_before_admin_bar_render', function () {
 remove_action( 'wp_head', 'wp_generator' );
 /**
  * Load custom site header template
- */
-add_action( 'get_header', function () {
-    get_template_part( 'template-parts/header/site', 'header' );
-}, 5 );
+ * 
