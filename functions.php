@@ -118,6 +118,9 @@ add_action( 'wp_before_admin_bar_render', function () {
  * 5) Basic cleanup: remove "generator" meta (minor hardening)
  */
 remove_action( 'wp_head', 'wp_generator' );
+
 /**
- * Load custom site header template
- * 
+ * Load custom site header template (no extra output here).
+ */
+
+// End of child theme functions. No closing PHP tag to avoid accidental whitespace output. 
