@@ -193,6 +193,109 @@ button, .button, a.button{cursor:pointer}
 /* Utilities: visually-hidden (accessibility) */
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
+/* Page layout with sidebar */
+.content-with-sidebar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.content-sidebar-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+.site-main {
+  min-width: 0; /* Prevent grid blowout */
+}
+
+.entry-header {
+  margin-bottom: 24px;
+}
+
+.entry-title {
+  font-size: 2rem;
+  margin: 0;
+  color: #0a3d62;
+}
+
+.entry-content {
+  line-height: 1.7;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #0a3d62;
+}
+
+.entry-content p {
+  margin-bottom: 1em;
+}
+
+.entry-content a {
+  color: #0a3d62;
+  text-decoration: underline;
+}
+
+.entry-content a:hover {
+  color: #ff6a00;
+}
+
+/* Sidebar positioning */
+.sidebar {
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+/* RTL layout adjustments */
+.is-rtl .content-sidebar-wrapper {
+  grid-template-columns: 320px 1fr;
+}
+
+.is-rtl .entry-content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Responsive sidebar layout */
+@media (max-width: 991.98px) {
+  .content-sidebar-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .is-rtl .content-sidebar-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    order: 2;
+  }
+
+  .site-main {
+    order: 1;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .content-with-sidebar .container {
+    padding: 24px 16px;
+  }
+
+  .entry-title {
+    font-size: 1.5rem;
+  }
+}
+
 /* Avoid duplicate/overriding parent rules by scoping styles to child where possible */
 
 /* End of custom.css */

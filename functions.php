@@ -123,4 +123,117 @@ remove_action( 'wp_head', 'wp_generator' );
  * Load custom site header template (no extra output here).
  */
 
+/**
+ * 6) Register navigation menus
+ */
+function bylaw_child_register_menus() {
+	register_nav_menus( array(
+		'primary'   => esc_html__( 'Primary Menu', 'bylaw-child' ),
+		'footer'    => esc_html__( 'Footer Menu', 'bylaw-child' ),
+		'sidebar'   => esc_html__( 'Sidebar Menu', 'bylaw-child' ),
+	) );
+}
+add_action( 'after_setup_theme', 'bylaw_child_register_menus' );
+
+/**
+ * 7) Register sidebar widget areas
+ */
+function bylaw_child_register_sidebars() {
+	// Main sidebar
+	register_sidebar( array(
+		'name'          => esc_html__( 'Main Sidebar', 'bylaw-child' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Widgets in this area will be shown in the sidebar.', 'bylaw-child' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+	// Footer widget areas
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 1', 'bylaw-child' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'First footer widget area.', 'bylaw-child' ),
+		'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2', 'bylaw-child' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Second footer widget area.', 'bylaw-child' ),
+		'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 3', 'bylaw-child' ),
+		'id'            => 'footer-3',
+		'description'   => esc_html__( 'Third footer widget area.', 'bylaw-child' ),
+		'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 4', 'bylaw-child' ),
+		'id'            => 'footer-4',
+		'description'   => esc_html__( 'Fourth footer widget area.', 'bylaw-child' ),
+		'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer-widget-title">',
+		'after_title'   => '</h4>',
+	) );
+}
+add_action( 'widgets_init', 'bylaw_child_register_sidebars' );
+
+/**
+ * 8) Enqueue additional child theme assets
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	// Enqueue header-footer CSS
+	wp_enqueue_style(
+		'bylaw-child-header-footer',
+		get_stylesheet_directory_uri() . '/assets/css/header-footer.css',
+		array( 'bylaw-child-style' ),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	// Enqueue custom CSS
+	wp_enqueue_style(
+		'bylaw-child-custom',
+		get_stylesheet_directory_uri() . '/assets/css/custom.css',
+		array( 'bylaw-child-style' ),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	// Enqueue navigation JS
+	wp_enqueue_script(
+		'bylaw-child-navigation',
+		get_stylesheet_directory_uri() . '/assets/js/navigation.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+}, 25 );
+
+/**
+ * 9) Load child theme include files
+ */
+require_once get_stylesheet_directory() . '/inc/hooks.php';
+require_once get_stylesheet_directory() . '/inc/cta.php';
+
+/**
+ * 10) Helper function to sanitize phone numbers for links
+ */
+function bylaw_child_sanitize_phone( $phone ) {
+	return preg_replace( '/[^0-9+]/', '', $phone );
+}
+
 // End of child theme functions. No closing PHP tag to avoid accidental whitespace output. 
