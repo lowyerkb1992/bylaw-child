@@ -8,12 +8,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
 
 <aside id="secondary" class="widget-area sidebar" role="complementary" aria-label="<?php echo esc_attr( is_rtl() ? 'الشريط الجانبي' : 'Sidebar' ); ?>">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+	<?php
+	// Always show contact widget first
+	get_template_part( 'template-parts/sidebar-contact' );
+	
+	// Then show any other widgets
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		dynamic_sidebar( 'sidebar-1' );
+	}
+	?>
 </aside>
