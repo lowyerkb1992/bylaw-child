@@ -22,7 +22,7 @@ $labels = array(
   <div class="topbar__inner">
     <div class="topbar__left">
       <?php if ( ! empty( $phone ) ) : ?>
-        <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>" class="topbar__contact-item topbar__phone" aria-label="<?php echo esc_attr( $labels['phone'] . ' ' . $phone ); ?>">
+        <a href="tel:<?php echo esc_attr( bylaw_child_sanitize_phone( $phone ) ); ?>" class="topbar__contact-item topbar__phone" aria-label="<?php echo esc_attr( $labels['phone'] . ' ' . $phone ); ?>">
           <span class="topbar__icon" aria-hidden="true">📞</span>
           <span class="topbar__label"><?php echo esc_html( $labels['phone'] ); ?></span>
           <span class="topbar__value"><?php echo esc_html( $phone ); ?></span>
@@ -40,7 +40,7 @@ $labels = array(
     
     <div class="topbar__right">
       <?php if ( ! empty( $whatsapp ) ) : ?>
-        <a href="https://wa.me/<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $whatsapp ) ); ?>" class="topbar__contact-item topbar__whatsapp" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $labels['whatsapp'] ); ?>">
+        <a href="https://wa.me/<?php echo esc_attr( bylaw_child_sanitize_phone( $whatsapp ) ); ?>" class="topbar__contact-item topbar__whatsapp" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $labels['whatsapp'] ); ?>">
           <span class="topbar__icon" aria-hidden="true">💬</span>
           <span class="topbar__label"><?php echo esc_html( $labels['whatsapp'] ); ?></span>
         </a>

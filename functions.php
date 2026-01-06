@@ -230,33 +230,10 @@ require_once get_stylesheet_directory() . '/inc/hooks.php';
 require_once get_stylesheet_directory() . '/inc/cta.php';
 
 /**
- * 10) Auto-populate sidebar with contact widget if empty
+ * 10) Helper function to sanitize phone numbers for links
  */
-add_action( 'dynamic_sidebar_before', 'bylaw_child_add_default_sidebar_content' );
-
-function bylaw_child_add_default_sidebar_content( $index ) {
-	// Only add to main sidebar if it has no widgets
-	if ( $index === 'sidebar-1' && ! is_active_sidebar( 'sidebar-1' ) ) {
-		get_template_part( 'template-parts/sidebar-contact' );
-	}
-}
-
-/**
- * 11) Add contact widget to sidebar by default (programmatically)
- */
-add_action( 'widgets_init', function() {
-	// If sidebar is empty, show contact widget template as fallback
-	add_filter( 'sidebars_widgets', 'bylaw_child_default_sidebar_widgets' );
-}, 99 );
-
-function bylaw_child_default_sidebar_widgets( $sidebars_widgets ) {
-	// Check if sidebar-1 is empty or not set
-	if ( empty( $sidebars_widgets['sidebar-1'] ) ) {
-		// We can't add widget instances programmatically easily,
-		// so we'll rely on the dynamic_sidebar_before hook instead
-		// This is just a placeholder to indicate intent
-	}
-	return $sidebars_widgets;
+function bylaw_child_sanitize_phone( $phone ) {
+	return preg_replace( '/[^0-9+]/', '', $phone );
 }
 
 // End of child theme functions. No closing PHP tag to avoid accidental whitespace output. 

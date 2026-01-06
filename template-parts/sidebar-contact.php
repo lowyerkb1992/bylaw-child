@@ -35,7 +35,7 @@ $labels = array(
 				<span class="sidebar-contact-item__icon" aria-hidden="true">📞</span>
 				<div class="sidebar-contact-item__details">
 					<span class="sidebar-contact-item__label"><?php echo esc_html( $labels['phone'] ); ?></span>
-					<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>" class="sidebar-contact-item__value">
+					<a href="tel:<?php echo esc_attr( bylaw_child_sanitize_phone( $phone ) ); ?>" class="sidebar-contact-item__value">
 						<?php echo esc_html( $phone ); ?>
 					</a>
 				</div>
@@ -59,7 +59,7 @@ $labels = array(
 				<span class="sidebar-contact-item__icon" aria-hidden="true">💬</span>
 				<div class="sidebar-contact-item__details">
 					<span class="sidebar-contact-item__label"><?php echo esc_html( $labels['whatsapp'] ); ?></span>
-					<a href="https://wa.me/<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $whatsapp ) ); ?>" class="sidebar-contact-item__value" target="_blank" rel="noopener noreferrer">
+					<a href="https://wa.me/<?php echo esc_attr( bylaw_child_sanitize_phone( $whatsapp ) ); ?>" class="sidebar-contact-item__value" target="_blank" rel="noopener noreferrer">
 						<?php echo esc_html( $whatsapp ); ?>
 					</a>
 				</div>
