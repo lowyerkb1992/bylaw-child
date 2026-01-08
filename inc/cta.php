@@ -49,7 +49,7 @@ function bch_print_floating_ctas() {
     );
 
     // Output sanitized static markup (no inline styles) to keep caching safe
-    echo "<nav class=\"bch-floating-ctas\" aria-label=\"Contact shortcuts\">";
+    echo '<nav class="bch-floating-ctas" aria-label="' . esc_attr__( 'Contact shortcuts', 'bylaw-child' ) . '">';
 
     if ( ! empty( $cfg['whatsapp'] ) ) {
         $wa = esc_attr( preg_replace( '/[^0-9+]/', '', $cfg['whatsapp'] ) );

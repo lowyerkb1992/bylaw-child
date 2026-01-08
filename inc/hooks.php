@@ -98,8 +98,11 @@ function bch_maybe_add_header_class( $classes ) {
         $classes[] = 'bch-has-cta';
     }
 
-    // Return same type as received
-    return is_string( $classes ) ? implode( ' ', array_filter( $classes ) ) : array_values( array_filter( $classes ) );
+    // Return same type as received (with safety check)
+    if ( is_string( $classes ) ) {
+        return implode( ' ', array_unique( array_filter( $classes ) ) );
+    }
+    return array_values( array_unique( array_filter( $classes ) ) );
 }
 
 // Example usage: if parent theme applies 'header_class' filter, hook into it. We guard with function_exists check.
