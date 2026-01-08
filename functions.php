@@ -58,7 +58,8 @@ add_action( 'init', function () {
  * - New pages (default)
  */
 function bylaw_child_close_comments_for_pages( $post_id, $post, $update ) {
-	if ( wp_is_post_revision( $post_id ) ) {
+	// إضافة فحص autosave / Add autosave check
+	if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
 		return;
 	}
 	if ( $post->post_type !== 'page' ) {
@@ -70,13 +71,15 @@ function bylaw_child_close_comments_for_pages( $post_id, $post, $update ) {
 		return;
 	}
 
-	// Update comment + ping status to closed
+	// منع infinite loop بشكل أفضل / Prevent infinite loop
 	remove_action( 'save_post', 'bylaw_child_close_comments_for_pages', 10 );
+	
 	wp_update_post( [
 		'ID'             => $post_id,
 		'comment_status' => 'closed',
 		'ping_status'    => 'closed',
 	] );
+	
 	add_action( 'save_post', 'bylaw_child_close_comments_for_pages', 10, 3 );
 }
 add_action( 'save_post', 'bylaw_child_close_comments_for_pages', 10, 3 );
@@ -118,9 +121,5 @@ add_action( 'wp_before_admin_bar_render', function () {
  * 5) Basic cleanup: remove "generator" meta (minor hardening)
  */
 remove_action( 'wp_head', 'wp_generator' );
-
-/**
- * Load custom site header template (no extra output here).
- */
 
 // End of child theme functions. No closing PHP tag to avoid accidental whitespace output. 

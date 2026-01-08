@@ -10,10 +10,10 @@ Thumbs.db
 *.log
 *.tmp
 
-# Node / build (لو موجودة)
+# Node / build (if present)
 node_modules/
 dist/
 build/
 
-# WordPress cache (لو ظهرت)
+# WordPress cache (if appears)
 wp-content/cache/

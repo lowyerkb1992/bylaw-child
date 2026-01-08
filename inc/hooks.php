@@ -81,7 +81,8 @@ function bch_topbar_output() {
  */
 function bch_maybe_add_header_class( $classes ) {
     // $classes may be string or array depending on theme; normalize to array
-    if ( is_string( $classes ) ) {
+    $was_string = is_string( $classes );
+    if ( $was_string ) {
         $classes = explode( ' ', $classes );
     }
 
@@ -98,8 +99,11 @@ function bch_maybe_add_header_class( $classes ) {
         $classes[] = 'bch-has-cta';
     }
 
-    // Return same type as received
-    return is_string( $classes ) ? implode( ' ', array_filter( $classes ) ) : array_values( array_filter( $classes ) );
+    // Return same type as received (with safety check)
+    if ( $was_string ) {
+        return implode( ' ', array_unique( array_filter( $classes ) ) );
+    }
+    return array_values( array_unique( array_filter( $classes ) ) );
 }
 
 // Example usage: if parent theme applies 'header_class' filter, hook into it. We guard with function_exists check.
