@@ -58,7 +58,7 @@ add_action( 'init', function () {
  * - New pages (default)
  */
 function bylaw_child_close_comments_for_pages( $post_id, $post, $update ) {
-	// إضافة فحص autosave
+	// إضافة فحص autosave / Add autosave check
 	if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
 		return;
 	}
@@ -71,14 +71,14 @@ function bylaw_child_close_comments_for_pages( $post_id, $post, $update ) {
 		return;
 	}
 
-	// منع infinite loop بشكل أفضل
+	// منع infinite loop بشكل أفضل / Prevent infinite loop
 	remove_action( 'save_post', 'bylaw_child_close_comments_for_pages', 10 );
 	
-	wp_update_post( array(
+	wp_update_post( [
 		'ID'             => $post_id,
 		'comment_status' => 'closed',
 		'ping_status'    => 'closed',
-	) );
+	] );
 	
 	add_action( 'save_post', 'bylaw_child_close_comments_for_pages', 10, 3 );
 }
